@@ -531,11 +531,10 @@ git --version
 ### Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Ashutosh9-pan/week6-spring-blog-api.git
 cd week6-spring-blog-api
 ```
 
-> The repository URL will be added after the project is published to GitHub.
 
 ### Run the Application
 

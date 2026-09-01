@@ -15,7 +15,7 @@ Spring Blog REST API
   <img src="https://img.shields.io/badge/H2-Development-blue" alt="H2">
   <img src="https://img.shields.io/badge/PostgreSQL-Production-blue" alt="PostgreSQL">
   <img src="https://img.shields.io/badge/Render-Live-success" alt="Render Live">
-  <img src="https://img.shields.io/badge/Tests-17%20Passed-success" alt="17 Tests Passed">
+  <img src="https://img.shields.io/badge/Tests-26%20Passed-success" alt="26 Tests Passed">
 </p>
 
 🌐 Live Production API
@@ -79,7 +79,11 @@ PostgreSQL production database and cloud deployment
 
 Swagger/OpenAPI documentation
 
-JUnit 5 and Mockito testing
+JUnit 5, Mockito and MockMvc testing
+
+Unit and integration testing
+
+Comprehensive application logging
 
 Postman API testing
 
@@ -132,47 +136,45 @@ Swagger exposes endpoints for Posts, Categories and Comments from a single inter
 
 The project follows a layered architecture to separate HTTP handling, business logic and persistence.
 
-
 Client / Postman / Swagger
 
-           |
+       |
 
-           v
+       v
 
-     Controller Layer
+ Controller Layer
 
-           |
+       |
 
-           v
+       v
 
-       DTO Models
+   DTO Models
 
-           |
+       |
 
-           v
+       v
 
-      Service Layer
+  Service Layer
 
-           |
+       |
 
-           v
+       v
 
-     Repository Layer
+ Repository Layer
 
-           |
+       |
 
-           v
+       v
 
-    JPA / Hibernate ORM
+JPA / Hibernate ORM
 
-           |
+       |
 
-           v
+       v
 
-        Database
+    Database
 
-     H2 / PostgreSQL
-
+ H2 / PostgreSQL
 
 Controller Layer
 
@@ -195,7 +197,6 @@ Exception Layer
 Provides centralized error responses using @RestControllerAdvice.
 
 📁 Project Structure
-
 
 week6-spring-blog-api/
 
@@ -295,6 +296,10 @@ week6-spring-blog-api/
 
 │       ├── java/com/ashutosh/blogapi/
 
+│       │   ├── integration/
+
+│       │   │   └── PostControllerIntegrationTest.java
+
 │       │   ├── service/
 
 │       │   │   ├── CategoryServiceTest.java
@@ -316,7 +321,6 @@ week6-spring-blog-api/
 ├── pom.xml
 
 └── README.md
-
 
 🔌 API Endpoints
 
@@ -364,9 +368,15 @@ Comments
 
 | POST | /api/comments | Create a comment |
 
+| POST | /api/posts/{postId}/comments | Add a comment to a post |
+
 | GET | /api/comments/post/{postId} | Get comments for a post |
 
+| GET | /api/posts/{postId}/comments | Get comments for a post |
+
 | GET | /api/comments/post/{postId}/approved | Get approved comments |
+
+| PUT | /api/comments/{id} | Update a comment |
 
 | PATCH | /api/comments/{id}/approve | Approve a comment |
 
@@ -380,9 +390,7 @@ The Posts API supports Spring Data pagination and sorting.
 
 Example:
 
-
 GET /api/posts?page=0&size=10&sort=createdAt,desc
-
 
 Parameters:
 
@@ -410,25 +418,21 @@ Creating a Blog Post
 
 Example request:
 
-
 {
 
-  "title": "Building REST APIs with Spring Boot",
+"title": "Building REST APIs with Spring Boot",
 
-  "content": "A practical guide to building scalable REST APIs using Spring Boot, Spring Data JPA and Hibernate.",
+"content": "A practical guide to building scalable REST APIs using Spring Boot, Spring Data JPA and Hibernate.",
 
-  "author": "Ashutosh",
+"author": "Ashutosh",
 
-  "categoryId": 1
+"categoryId": 1
 
 }
 
-
 A successfully created resource returns:
 
-
 HTTP 201 Created
-
 
 Postman — Create Post
 
@@ -442,25 +446,19 @@ Comment Moderation
 
 Comments are initially created in an unapproved state.
 
-
 {
 
-  "approved": false
+"approved": false
 
 }
 
-
 A comment can then be approved through:
-
 
 PATCH /api/comments/{id}/approve
 
-
 or rejected through:
 
-
 PATCH /api/comments/{id}/reject
-
 
 Approved Comment
 
@@ -472,13 +470,11 @@ Approved Comment
 
 The moderation endpoint returns the updated comment with:
 
-
 {
 
-  "approved": true
+"approved": true
 
 }
-
 
 Request Validation
 
@@ -504,9 +500,7 @@ Required post ID
 
 Invalid input returns:
 
-
 400 Bad Request
-
 
 with structured field-level validation errors.
 
@@ -514,9 +508,7 @@ Exception Handling
 
 Centralized exception handling is implemented with:
 
-
 @RestControllerAdvice
-
 
 | Scenario | HTTP Status |
 
@@ -536,29 +528,23 @@ Development — H2
 
 The development profile uses a persistent file-based H2 database:
 
-
 spring.datasource.url=jdbc:h2:file:./data/blogdb
 
 spring.datasource.username=sa
 
 spring.datasource.password=
 
-
 H2 Console:
-
 
 http://localhost:8080/h2-console
 
-
 Connection settings:
-
 
 JDBC URL: jdbc:h2:file:./data/blogdb
 
 Username: sa
 
 Password: leave blank
-
 
 Database Verification
 
@@ -574,23 +560,19 @@ Production — PostgreSQL
 
 The production profile is configured to obtain database credentials from environment variables:
 
-
 spring.datasource.url=${DB_URL}
 
 spring.datasource.username=${DB_USERNAME}
 
 spring.datasource.password=${DB_PASSWORD}
 
-
 Required environment variables:
-
 
 DB_URL
 
 DB_USERNAME
 
 DB_PASSWORD
-
 
 This keeps production credentials outside the source code and repository.
 
@@ -608,15 +590,11 @@ Swagger / OpenAPI
 
 Start the application and visit:
 
-
 http://localhost:8080/swagger-ui/index.html
-
 
 OpenAPI specification:
 
-
 http://localhost:8080/v3/api-docs
-
 
 Swagger provides interactive documentation for all Posts, Categories and Comments endpoints.
 
@@ -624,9 +602,7 @@ Postman Collection
 
 A ready-to-import Postman collection is included in:
 
-
 docs/postman_collection.json
-
 
 It contains requests for:
 
@@ -642,6 +618,12 @@ Filtering posts by author
 
 Comment creation
 
+Nested comment creation
+
+Nested comment retrieval
+
+Comment update
+
 Approved comment retrieval
 
 Comment approval and rejection
@@ -650,9 +632,7 @@ Comment deletion
 
 Default API base URL:
 
-
 http://localhost:8080
-
 
 🧪 Automated Testing
 
@@ -668,14 +648,11 @@ In-memory H2 test database
 
 Run the complete test suite:
 
-
 mvn clean test
-
 
 Test Results
 
-
-Tests run: 17
+Tests run: 26
 
 Failures: 0
 
@@ -684,7 +661,6 @@ Errors: 0
 Skipped: 0
 
 BUILD SUCCESS
-
 
 <p align="center">
 
@@ -702,7 +678,27 @@ Post service business logic
 
 Comment service business logic
 
-Repository dependency mocking
+Mockito-based unit testing
+
+MockMvc integration testing
+
+Post creation through REST endpoints
+
+Pagination and sorting integration tests
+
+Category filtering integration tests
+
+Request validation integration tests
+
+404 exception response integration tests
+
+Nested comment creation endpoint
+
+Nested comment retrieval endpoint
+
+Comment update endpoint
+
+Comment deletion endpoint
 
 Successful operations
 
@@ -724,41 +720,31 @@ Git
 
 Verify:
 
-
 java -version
 
 mvn -version
 
 git --version
 
-
 Clone the Repository
-
 
 git clone https://github.com/Ashutosh9-pan/week6-spring-blog-api.git
 
 cd week6-spring-blog-api
 
-
 Run the Application
 
-
-mvn spring-boot:run
-
+mvn spring-boot
 
 The API starts at:
 
-
 http://localhost:8080
-
 
 Development and Production Profiles
 
 The default configuration activates the development profile:
 
-
 spring.profiles.active=dev
-
 
 Development uses H2.
 
@@ -766,9 +752,7 @@ For production, activate the prod profile and provide the required PostgreSQL en
 
 Example:
 
-
-mvn spring-boot:run -Dspring-boot.run.profiles=prod
-
+mvn spring-boot -Dspring-boot.run.profiles=prod
 
 HTTP Status Codes
 
@@ -820,6 +804,10 @@ API documentation
 
 Unit testing and mocking
 
+Integration testing with MockMvc
+
+Comprehensive application logging
+
 Development and production database profiles
 
 Project Verification
@@ -855,7 +843,11 @@ Project Verification
 
 | Postman Collection | ✅ Included |
 
-| Automated Tests | ✅ 17/17 Passed |
+| Automated Tests | ✅ 26/26 Passed |
+
+| Integration Tests | ✅ Working |
+
+| Application Logging | ✅ Implemented |
 
 👨‍💻 Author
 

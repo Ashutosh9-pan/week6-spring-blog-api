@@ -2,6 +2,7 @@ package com.ashutosh.blogapi.controller;
 
 import com.ashutosh.blogapi.dto.CommentRequest;
 import com.ashutosh.blogapi.dto.CommentResponse;
+import com.ashutosh.blogapi.dto.NestedCommentRequest;
 import com.ashutosh.blogapi.service.CommentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comments")
 public class CommentController {
 
     private final CommentService commentService;
@@ -20,7 +20,7 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @PostMapping
+    @PostMapping("/api/comments")
     public ResponseEntity<CommentResponse> createComment(
             @Valid @RequestBody CommentRequest request) {
 
@@ -29,7 +29,23 @@ public class CommentController {
                 .body(commentService.createComment(request));
     }
 
-    @GetMapping("/post/{postId}")
+    @PostMapping("/api/posts/{postId}/comments")
+    public ResponseEntity<CommentResponse> createCommentForPost(
+            @PathVariable Long postId,
+            @Valid @RequestBody NestedCommentRequest request) {
+
+        CommentRequest commentRequest = new CommentRequest(
+                request.getAuthor(),
+                request.getContent(),
+                postId
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(commentService.createComment(commentRequest));
+    }
+
+    @GetMapping("/api/comments/post/{postId}")
     public ResponseEntity<List<CommentResponse>> getCommentsByPost(
             @PathVariable Long postId) {
 
@@ -38,7 +54,16 @@ public class CommentController {
         );
     }
 
-    @GetMapping("/post/{postId}/approved")
+    @GetMapping("/api/posts/{postId}/comments")
+    public ResponseEntity<List<CommentResponse>> getPostComments(
+            @PathVariable Long postId) {
+
+        return ResponseEntity.ok(
+                commentService.getCommentsByPost(postId)
+        );
+    }
+
+    @GetMapping("/api/comments/post/{postId}/approved")
     public ResponseEntity<List<CommentResponse>> getApprovedCommentsByPost(
             @PathVariable Long postId) {
 
@@ -47,7 +72,17 @@ public class CommentController {
         );
     }
 
-    @PatchMapping("/{id}/approve")
+    @PutMapping("/api/comments/{id}")
+    public ResponseEntity<CommentResponse> updateComment(
+            @PathVariable Long id,
+            @Valid @RequestBody CommentRequest request) {
+
+        return ResponseEntity.ok(
+                commentService.updateComment(id, request)
+        );
+    }
+
+    @PatchMapping("/api/comments/{id}/approve")
     public ResponseEntity<CommentResponse> approveComment(
             @PathVariable Long id) {
 
@@ -56,7 +91,7 @@ public class CommentController {
         );
     }
 
-    @PatchMapping("/{id}/reject")
+    @PatchMapping("/api/comments/{id}/reject")
     public ResponseEntity<CommentResponse> rejectComment(
             @PathVariable Long id) {
 
@@ -65,12 +100,11 @@ public class CommentController {
         );
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/api/comments/{id}")
     public ResponseEntity<Void> deleteComment(
             @PathVariable Long id) {
 
         commentService.deleteComment(id);
-
         return ResponseEntity.noContent().build();
     }
 }

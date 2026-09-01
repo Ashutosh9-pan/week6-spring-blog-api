@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "288894d0-325d-420c-b075-60fb7b288521",
     "name": "Week 6 - Spring Blog REST API",
-    "description": "Postman collection for testing the Spring Boot Blog REST API. Includes Categories, Posts, Comments, pagination, sorting, filtering, validation and moderation endpoints.",
+    "description": "Postman collection for testing the Spring Boot Blog REST API. Includes Categories, Posts, Comments, nested comment routes, comment updates, pagination, sorting, filtering, validation and moderation endpoints.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "57837313",
     "_collection_link": "https://go.postman.co/collection/57837313-288894d0-325d-420c-b075-60fb7b288521?source=collection_link"
@@ -361,6 +361,35 @@
           "response": []
         },
         {
+          "name": "Create Comment For Post (Nested)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"Rahul\",\n  \"content\": \"Great explanation!\",\n  \"postId\": {{postId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/posts/{{postId}}/comments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}",
+                "comments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Get All Comments By Post",
           "request": {
             "method": "GET",
@@ -375,6 +404,26 @@
                 "comments",
                 "post",
                 "{{postId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Comments For Post (Nested)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/posts/{{postId}}/comments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "posts",
+                "{{postId}}",
+                "comments"
               ]
             }
           },
@@ -396,6 +445,34 @@
                 "post",
                 "{{postId}}",
                 "approved"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Comment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"Rahul Updated\",\n  \"content\": \"Updated comment content\",\n  \"postId\": {{postId}}\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/{{commentId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "comments",
+                "{{commentId}}"
               ]
             }
           },

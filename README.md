@@ -138,43 +138,43 @@ The project follows a layered architecture to separate HTTP handling, business l
 
 Client / Postman / Swagger
 
-       |
+   |
 
-       v
+   v
 
- Controller Layer
+Controller Layer
 
-       |
+   |
 
-       v
+   v
 
-   DTO Models
+DTO Models
 
-       |
+   |
 
-       v
+   v
 
-  Service Layer
+Service Layer
 
-       |
+   |
 
-       v
+   v
 
- Repository Layer
+Repository Layer
 
-       |
+   |
 
-       v
+   v
 
 JPA / Hibernate ORM
 
-       |
+   |
 
-       v
+   v
 
-    Database
+Database
 
- H2 / PostgreSQL
+H2 / PostgreSQL
 
 Controller Layer
 
@@ -245,6 +245,8 @@ week6-spring-blog-api/
 │   │   │   │   ├── CommentRequest.java
 
 │   │   │   │   ├── CommentResponse.java
+
+│   │   │   │   ├── NestedCommentRequest.java
 
 │   │   │   │   ├── PostRequest.java
 
@@ -384,6 +386,17 @@ Comments
 
 | DELETE | /api/comments/{id} | Delete a comment |
 
+Nested Comment Creation
+
+For POST /api/posts/{postId}/comments, the post ID is supplied by the URL path and does not need to be repeated in the request body.
+
+{
+  "author": "Rahul",
+  "content": "Great explanation!"
+}
+
+The standard POST /api/comments and PUT /api/comments/{id} requests continue to use postId in the request body.
+
 Pagination and Sorting
 
 The Posts API supports Spring Data pagination and sorting.
@@ -496,7 +509,9 @@ Comment author validation
 
 Comment content validation
 
-Required post ID
+Required post ID for standard comment create/update requests
+
+For nested comment creation, postId is taken from the URL path.
 
 Invalid input returns:
 
@@ -618,7 +633,7 @@ Filtering posts by author
 
 Comment creation
 
-Nested comment creation
+Nested comment creation using the post ID from the URL path
 
 Nested comment retrieval
 

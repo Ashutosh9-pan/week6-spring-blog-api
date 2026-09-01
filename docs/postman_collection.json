@@ -372,7 +372,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"author\": \"Rahul\",\n  \"content\": \"Great explanation!\",\n  \"postId\": {{postId}}\n}"
+              "raw": "{\n  \"author\": \"Rahul\",\n  \"content\": \"Great explanation!\"\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/posts/{{postId}}/comments",

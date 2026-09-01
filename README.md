@@ -29,7 +29,7 @@ The application is deployed on Render and connected to a PostgreSQL production d
   </tr>
   <tr>
     <td>🚀 Live API</td>
-    <td><a href="https://week6-spring-blog-api.onrender.com">Open Production API</a></td>
+    <td><a href="https://week6-spring-blog-api.onrender.com/api/posts">Open Production API</a></td>
   </tr>
   <tr>
     <td>📘 Swagger UI</td>

@@ -1,114 +1,101 @@
-# Spring Blog REST API
+Spring Blog REST API
 
 <p align="center">
-
-  <strong>A RESTful Blog Management API built with Java 21 and Spring Boot</strong>
-
+  <strong>A production-ready RESTful Blog Management API built with Java 21 and Spring Boot</strong>
 </p>
 
 <p align="center">
-
-  Posts • Categories • Comments • Pagination • Validation • Moderation • Swagger • Automated Testing
-
+  Posts • Categories • Comments • Pagination • Validation • Moderation • Swagger • Automated Testing
 </p>
 
 <p align="center">
-
-  <img src="https://img.shields.io/badge/Java-21-orange" alt="Java 21">
-
-  <img src="https://img.shields.io/badge/Spring%20Boot-4.0.8-brightgreen" alt="Spring Boot 4.0.8">
-
-  <img src="https://img.shields.io/badge/Maven-Build-blue" alt="Maven">
-
-  <img src="https://img.shields.io/badge/H2-Development-blue" alt="H2">
-
-  <img src="https://img.shields.io/badge/PostgreSQL-Production-blue" alt="PostgreSQL">
-
-  <img src="https://img.shields.io/badge/Tests-17%20Passed-success" alt="17 Tests Passed">
-
+  <img src="https://img.shields.io/badge/Java-21-orange" alt="Java 21">
+  <img src="https://img.shields.io/badge/Spring%20Boot-4.0.8-brightgreen" alt="Spring Boot 4.0.8">
+  <img src="https://img.shields.io/badge/Maven-Build-blue" alt="Maven">
+  <img src="https://img.shields.io/badge/H2-Development-blue" alt="H2">
+  <img src="https://img.shields.io/badge/PostgreSQL-Production-blue" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Render-Live-success" alt="Render Live">
+  <img src="https://img.shields.io/badge/Tests-17%20Passed-success" alt="17 Tests Passed">
 </p>
 
----
-
-**## Live Production API
+🌐 Live Production API
 
 The application is deployed on Render and connected to a PostgreSQL production database.
 
-Resource
+<table>
+  <tr>
+    <th>Resource</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>🚀 Live API</td>
+    <td><a href="https://week6-spring-blog-api.onrender.com">Open Production API</a></td>
+  </tr>
+  <tr>
+    <td>📘 Swagger UI</td>
+    <td><a href="https://week6-spring-blog-api.onrender.com/swagger-ui/index.html">Open Interactive API Docs</a></td>
+  </tr>
+  <tr>
+    <td>📄 OpenAPI JSON</td>
+    <td><a href="https://week6-spring-blog-api.onrender.com/v3/api-docs">View OpenAPI Specification</a></td>
+  </tr>
+  <tr>
+    <td>💻 GitHub Repository</td>
+    <td><a href="https://github.com/Ashutosh9-pan/week6-spring-blog-api">View Source Code</a></td>
+  </tr>
+</table>
 
-Link
+Render Free Tier: The service may spin down after inactivity, so the first request can take around 50 seconds or more.
 
-Live API
-
-https://week6-spring-blog-api.onrender.com
-
-Swagger UI
-
-https://week6-spring-blog-api.onrender.com/swagger-ui/index.html
-
-OpenAPI JSON
-
-https://week6-spring-blog-api.onrender.com/v3/api-docs
-
-GitHub Repository
-
-https://github.com/Ashutosh9-pan/week6-spring-blog-api
-
-Note: The Render free instance may spin down during inactivity, so the first request can take around 50 seconds or more.
-
-Overview**
+📌 Overview
 
 Spring Blog REST API is a backend application for managing blog content through RESTful endpoints.
 
 The project demonstrates a clean layered Spring Boot architecture with support for:
 
-- Blog posts
+Blog posts
 
-- Categories
+Categories
 
-- Comments and moderation
+Comments and moderation
 
-- CRUD operations
+CRUD operations
 
-- Pagination and sorting
+Pagination and sorting
 
-- Filtering by category and author
+Filtering by category and author
 
-- DTO-based API models
+DTO-based API models
 
-- Request validation
+Request validation
 
-- Global exception handling
+Global exception handling
 
-- Transaction management
+Transaction management
 
-- H2 development database
+H2 development database
 
-- PostgreSQL production database and cloud deployment
+PostgreSQL production database and cloud deployment
 
-- Swagger/OpenAPI documentation
+Swagger/OpenAPI documentation
 
-- JUnit 5 and Mockito testing
+JUnit 5 and Mockito testing
 
-- Postman API testing
+Postman API testing
 
----
-
-## API Documentation Preview
+API Documentation Preview
 
 The complete REST API is documented through Swagger/OpenAPI.
 
 <p align="center">
 
-  <img src="docs/screenshots/swagger-ui.png" alt="Spring Blog REST API Swagger UI" width="900">
+  <img src="docs/screenshots/swagger-ui.png" alt="Spring Blog REST API Swagger UI" width="900">
 
 </p>
 
 Swagger exposes endpoints for Posts, Categories and Comments from a single interactive interface.
 
----
-
-## Tech Stack
+🛠️ Tech Stack
 
 | Technology | Usage |
 
@@ -141,81 +128,74 @@ Swagger exposes endpoints for Posts, Categories and Comments from a single inter
 
 | Postman | Manual API testing |
 
----
-
-## Architecture
+🏗️ Architecture
 
 The project follows a layered architecture to separate HTTP handling, business logic and persistence.
 
-```text
 
 Client / Postman / Swagger
 
-           |
+           |
 
-           v
+           v
 
-     Controller Layer
+     Controller Layer
 
-           |
+           |
 
-           v
+           v
 
-       DTO Models
+       DTO Models
 
-           |
+           |
 
-           v
+           v
 
-      Service Layer
+      Service Layer
 
-           |
+           |
 
-           v
+           v
 
-     Repository Layer
+     Repository Layer
 
-           |
+           |
 
-           v
+           v
 
-    JPA / Hibernate ORM
+    JPA / Hibernate ORM
 
-           |
+           |
 
-           v
+           v
 
-        Database
+        Database
 
-     H2 / PostgreSQL
+     H2 / PostgreSQL
 
-```
 
-### Controller Layer
+Controller Layer
 
 Handles REST requests, validation and HTTP responses.
 
-### Service Layer
+Service Layer
 
 Contains business logic and transaction management.
 
-### Repository Layer
+Repository Layer
 
 Uses Spring Data JPA to interact with the database.
 
-### DTO Layer
+DTO Layer
 
 Separates external API request/response models from persistence entities.
 
-### Exception Layer
+Exception Layer
 
-Provides centralized error responses using `@RestControllerAdvice`.
+Provides centralized error responses using @RestControllerAdvice.
 
----
+📁 Project Structure
 
-## Project Structure
-
-```text
 
 week6-spring-blog-api/
 
@@ -223,111 +203,111 @@ week6-spring-blog-api/
 
 ├── docs/
 
-│   ├── postman_collection.json
+│   ├── postman_collection.json
 
-│   └── screenshots/
+│   └── screenshots/
 
-│       ├── swagger-ui.png
+│       ├── swagger-ui.png
 
-│       ├── h2-console.png
+│       ├── h2-console.png
 
-│       ├── postman-pagination.png
+│       ├── postman-pagination.png
 
-│       ├── postman-create-post.png
+│       ├── postman-create-post.png
 
-│       ├── comment-moderation.png
+│       ├── comment-moderation.png
 
-│       └── test-success.png
+│       └── test-success.png
 
 |
 
 ├── src/
 
-│   ├── main/
+│   ├── main/
 
-│   │   ├── java/com/ashutosh/blogapi/
+│   │   ├── java/com/ashutosh/blogapi/
 
-│   │   │   ├── config/
+│   │   │   ├── config/
 
-│   │   │   │   └── SwaggerConfig.java
+│   │   │   │   └── SwaggerConfig.java
 
-│   │   │   ├── controller/
+│   │   │   ├── controller/
 
-│   │   │   │   ├── CategoryController.java
+│   │   │   │   ├── CategoryController.java
 
-│   │   │   │   ├── CommentController.java
+│   │   │   │   ├── CommentController.java
 
-│   │   │   │   └── PostController.java
+│   │   │   │   └── PostController.java
 
-│   │   │   ├── dto/
+│   │   │   ├── dto/
 
-│   │   │   │   ├── CommentRequest.java
+│   │   │   │   ├── CommentRequest.java
 
-│   │   │   │   ├── CommentResponse.java
+│   │   │   │   ├── CommentResponse.java
 
-│   │   │   │   ├── PostRequest.java
+│   │   │   │   ├── PostRequest.java
 
-│   │   │   │   └── PostResponse.java
+│   │   │   │   └── PostResponse.java
 
-│   │   │   ├── entity/
+│   │   │   ├── entity/
 
-│   │   │   │   ├── Category.java
+│   │   │   │   ├── Category.java
 
-│   │   │   │   ├── Comment.java
+│   │   │   │   ├── Comment.java
 
-│   │   │   │   └── Post.java
+│   │   │   │   └── Post.java
 
-│   │   │   ├── exception/
+│   │   │   ├── exception/
 
-│   │   │   │   ├── DuplicateResourceException.java
+│   │   │   │   ├── DuplicateResourceException.java
 
-│   │   │   │   ├── GlobalExceptionHandler.java
+│   │   │   │   ├── GlobalExceptionHandler.java
 
-│   │   │   │   └── ResourceNotFoundException.java
+│   │   │   │   └── ResourceNotFoundException.java
 
-│   │   │   ├── repository/
+│   │   │   ├── repository/
 
-│   │   │   │   ├── CategoryRepository.java
+│   │   │   │   ├── CategoryRepository.java
 
-│   │   │   │   ├── CommentRepository.java
+│   │   │   │   ├── CommentRepository.java
 
-│   │   │   │   └── PostRepository.java
+│   │   │   │   └── PostRepository.java
 
-│   │   │   ├── service/
+│   │   │   ├── service/
 
-│   │   │   │   ├── CategoryService.java
+│   │   │   │   ├── CategoryService.java
 
-│   │   │   │   ├── CommentService.java
+│   │   │   │   ├── CommentService.java
 
-│   │   │   │   └── PostService.java
+│   │   │   │   └── PostService.java
 
-│   │   │   └── BlogApiApplication.java
+│   │   │   └── BlogApiApplication.java
 
-│   │   └── resources/
+│   │   └── resources/
 
-│   │       ├── application.properties
+│   │       ├── application.properties
 
-│   │       ├── application-dev.properties
+│   │       ├── application-dev.properties
 
-│   │       └── application-prod.properties
+│   │       └── application-prod.properties
 
-│   └── test/
+│   └── test/
 
-│       ├── java/com/ashutosh/blogapi/
+│       ├── java/com/ashutosh/blogapi/
 
-│       │   ├── service/
+│       │   ├── service/
 
-│       │   │   ├── CategoryServiceTest.java
+│       │   │   ├── CategoryServiceTest.java
 
-│       │   │   ├── CommentServiceTest.java
+│       │   │   ├── CommentServiceTest.java
 
-│       │   │   └── PostServiceTest.java
+│       │   │   └── PostServiceTest.java
 
-│       │   └── BlogApiApplicationTests.java
+│       │   └── BlogApiApplicationTests.java
 
-│       └── resources/
+│       └── resources/
 
-│           └── application-dev.properties
+│           └── application-dev.properties
 
 |
 
@@ -337,79 +317,72 @@ week6-spring-blog-api/
 
 └── README.md
 
-```
 
----
+🔌 API Endpoints
 
-## API Endpoints
-
-### Categories
+Categories
 
 | Method | Endpoint | Description |
 
 |---|---|---|
 
-| `POST` | `/api/categories` | Create a category |
+| POST | /api/categories | Create a category |
 
-| `GET` | `/api/categories` | Get all categories |
+| GET | /api/categories | Get all categories |
 
-| `GET` | `/api/categories/{id}` | Get category by ID |
+| GET | /api/categories/{id} | Get category by ID |
 
-| `PUT` | `/api/categories/{id}` | Update category |
+| PUT | /api/categories/{id} | Update category |
 
-| `DELETE` | `/api/categories/{id}` | Delete category |
+| DELETE | /api/categories/{id} | Delete category |
 
-### Posts
-
-| Method | Endpoint | Description |
-
-|---|---|---|
-
-| `POST` | `/api/posts` | Create a post |
-
-| `GET` | `/api/posts` | Get posts with pagination and sorting |
-
-| `GET` | `/api/posts/{id}` | Get post by ID |
-
-| `GET` | `/api/posts/category/{categoryId}` | Filter posts by category |
-
-| `GET` | `/api/posts/author/{author}` | Filter posts by author |
-
-| `PUT` | `/api/posts/{id}` | Update post |
-
-| `DELETE` | `/api/posts/{id}` | Delete post |
-
-### Comments
+Posts
 
 | Method | Endpoint | Description |
 
 |---|---|---|
 
-| `POST` | `/api/comments` | Create a comment |
+| POST | /api/posts | Create a post |
 
-| `GET` | `/api/comments/post/{postId}` | Get comments for a post |
+| GET | /api/posts | Get posts with pagination and sorting |
 
-| `GET` | `/api/comments/post/{postId}/approved` | Get approved comments |
+| GET | /api/posts/{id} | Get post by ID |
 
-| `PATCH` | `/api/comments/{id}/approve` | Approve a comment |
+| GET | /api/posts/category/{categoryId} | Filter posts by category |
 
-| `PATCH` | `/api/comments/{id}/reject` | Reject a comment |
+| GET | /api/posts/author/{author} | Filter posts by author |
 
-| `DELETE` | `/api/comments/{id}` | Delete a comment |
+| PUT | /api/posts/{id} | Update post |
 
----
+| DELETE | /api/posts/{id} | Delete post |
 
-## Pagination and Sorting
+Comments
+
+| Method | Endpoint | Description |
+
+|---|---|---|
+
+| POST | /api/comments | Create a comment |
+
+| GET | /api/comments/post/{postId} | Get comments for a post |
+
+| GET | /api/comments/post/{postId}/approved | Get approved comments |
+
+| PATCH | /api/comments/{id}/approve | Approve a comment |
+
+| PATCH | /api/comments/{id}/reject | Reject a comment |
+
+| DELETE | /api/comments/{id} | Delete a comment |
+
+Pagination and Sorting
 
 The Posts API supports Spring Data pagination and sorting.
 
 Example:
 
-```http
 
 GET /api/posts?page=0&size=10&sort=createdAt,desc
 
-```
 
 Parameters:
 
@@ -417,179 +390,152 @@ Parameters:
 
 |---|---|---|
 
-| `page` | Page number | `0` |
+| page | Page number | 0 |
 
-| `size` | Number of records per page | `10` |
+| size | Number of records per page | 10 |
 
-| `sort` | Property and direction | `createdAt,desc` |
+| sort | Property and direction | createdAt,desc |
 
-### Postman Result
+Postman Result
 
 <p align="center">
 
-  <img src="docs/screenshots/postman-pagination.png" alt="Postman Pagination and Sorting" width="900">
+  <img src="docs/screenshots/postman-pagination.png" alt="Postman Pagination and Sorting" width="900">
 
 </p>
 
-The response demonstrates successful pagination and sorting with an HTTP `200 OK` response.
+The response demonstrates successful pagination and sorting with an HTTP 200 OK response.
 
----
-
-## Creating a Blog Post
+Creating a Blog Post
 
 Example request:
 
-```json
 
 {
 
-  "title": "Building REST APIs with Spring Boot",
+  "title": "Building REST APIs with Spring Boot",
 
-  "content": "A practical guide to building scalable REST APIs using Spring Boot, Spring Data JPA and Hibernate.",
+  "content": "A practical guide to building scalable REST APIs using Spring Boot, Spring Data JPA and Hibernate.",
 
-  "author": "Ashutosh",
+  "author": "Ashutosh",
 
-  "categoryId": 1
+  "categoryId": 1
 
 }
 
-```
 
 A successfully created resource returns:
 
-```text
 
 HTTP 201 Created
 
-```
 
-### Postman — Create Post
+Postman — Create Post
 
 <p align="center">
 
-  <img src="docs/screenshots/postman-create-post.png" alt="Create Blog Post using Postman" width="900">
+  <img src="docs/screenshots/postman-create-post.png" alt="Create Blog Post using Postman" width="900">
 
 </p>
 
----
-
-## Comment Moderation
+Comment Moderation
 
 Comments are initially created in an unapproved state.
 
-```json
 
 {
 
-  "approved": false
+  "approved": false
 
 }
 
-```
 
 A comment can then be approved through:
 
-```http
 
 PATCH /api/comments/{id}/approve
 
-```
 
 or rejected through:
 
-```http
 
 PATCH /api/comments/{id}/reject
 
-```
 
-### Approved Comment
+Approved Comment
 
 <p align="center">
 
-  <img src="docs/screenshots/comment-moderation.png" alt="Comment Moderation API" width="900">
+  <img src="docs/screenshots/comment-moderation.png" alt="Comment Moderation API" width="900">
 
 </p>
 
 The moderation endpoint returns the updated comment with:
 
-```json
 
 {
 
-  "approved": true
+  "approved": true
 
 }
 
-```
 
----
-
-## Request Validation
+Request Validation
 
 Jakarta Bean Validation is used to validate incoming requests.
 
 Validation includes:
 
-- Required category name
+Required category name
 
-- Category name length
+Category name length
 
-- Required post title and content
+Required post title and content
 
-- Required post author
+Required post author
 
-- Required category ID
+Required category ID
 
-- Comment author validation
+Comment author validation
 
-- Comment content validation
+Comment content validation
 
-- Required post ID
+Required post ID
 
 Invalid input returns:
 
-```text
 
 400 Bad Request
 
-```
 
 with structured field-level validation errors.
 
----
-
-## Exception Handling
+Exception Handling
 
 Centralized exception handling is implemented with:
 
-```java
 
 @RestControllerAdvice
 
-```
 
 | Scenario | HTTP Status |
 
 |---|---|
 
-| Validation failure | `400 Bad Request` |
+| Validation failure | 400 Bad Request |
 
-| Resource not found | `404 Not Found` |
+| Resource not found | 404 Not Found |
 
-| Duplicate resource | `409 Conflict` |
+| Duplicate resource | 409 Conflict |
 
-| Unexpected server error | `500 Internal Server Error` |
+| Unexpected server error | 500 Internal Server Error |
 
----
+Database Configuration
 
-## Database Configuration
-
-### Development — H2
+Development — H2
 
 The development profile uses a persistent file-based H2 database:
 
-```properties
 
 spring.datasource.url=jdbc:h2:file:./data/blogdb
 
@@ -597,19 +543,15 @@ spring.datasource.username=sa
 
 spring.datasource.password=
 
-```
 
 H2 Console:
 
-```text
 
 http://localhost:8080/h2-console
 
-```
 
 Connection settings:
 
-```text
 
 JDBC URL: jdbc:h2:file:./data/blogdb
 
@@ -617,25 +559,21 @@ Username: sa
 
 Password: leave blank
 
-```
 
-### Database Verification
+Database Verification
 
 <p align="center">
 
-  <img src="docs/screenshots/h2-console.png" alt="H2 Database Console" width="900">
+  <img src="docs/screenshots/h2-console.png" alt="H2 Database Console" width="900">
 
 </p>
 
-The application maintains separate `CATEGORIES`, `POSTS`, and `COMMENTS` tables through JPA/Hibernate.
+The application maintains separate CATEGORIES, POSTS, and COMMENTS tables through JPA/Hibernate.
 
----
-
-## Production — PostgreSQL
+Production — PostgreSQL
 
 The production profile is configured to obtain database credentials from environment variables:
 
-```properties
 
 spring.datasource.url=${DB_URL}
 
@@ -643,11 +581,9 @@ spring.datasource.username=${DB_USERNAME}
 
 spring.datasource.password=${DB_PASSWORD}
 
-```
 
 Required environment variables:
 
-```text
 
 DB_URL
 
@@ -655,7 +591,6 @@ DB_USERNAME
 
 DB_PASSWORD
 
-```
 
 This keeps production credentials outside the source code and repository.
 
@@ -669,93 +604,76 @@ OpenAPI: https://week6-spring-blog-api.onrender.com/v3/api-docs
 
 Production deployment has been verified by successfully creating categories, posts, and comments and by approving comments through the live Swagger UI.
 
----
-
-## Swagger / OpenAPI
+Swagger / OpenAPI
 
 Start the application and visit:
 
-```text
 
 http://localhost:8080/swagger-ui/index.html
 
-```
 
 OpenAPI specification:
 
-```text
 
 http://localhost:8080/v3/api-docs
 
-```
 
 Swagger provides interactive documentation for all Posts, Categories and Comments endpoints.
 
----
-
-## Postman Collection
+Postman Collection
 
 A ready-to-import Postman collection is included in:
 
-```text
 
 docs/postman_collection.json
 
-```
 
 It contains requests for:
 
-- Category CRUD
+Category CRUD
 
-- Post CRUD
+Post CRUD
 
-- Pagination and sorting
+Pagination and sorting
 
-- Filtering posts by category
+Filtering posts by category
 
-- Filtering posts by author
+Filtering posts by author
 
-- Comment creation
+Comment creation
 
-- Approved comment retrieval
+Approved comment retrieval
 
-- Comment approval and rejection
+Comment approval and rejection
 
-- Comment deletion
+Comment deletion
 
 Default API base URL:
 
-```text
 
 http://localhost:8080
 
-```
 
----
-
-## Automated Testing
+🧪 Automated Testing
 
 The project contains automated tests using:
 
-- JUnit 5
+JUnit 5
 
-- Mockito
+Mockito
 
-- Spring Boot Test
+Spring Boot Test
 
-- In-memory H2 test database
+In-memory H2 test database
 
 Run the complete test suite:
 
-```bash
 
 mvn clean test
 
-```
 
-### Test Results
+Test Results
 
-```text
 
 Tests run: 17
 
@@ -767,49 +685,45 @@ Skipped: 0
 
 BUILD SUCCESS
 
-```
 
 <p align="center">
 
-  <img src="docs/screenshots/test-success.png" alt="Maven Automated Test Results" width="900">
+  <img src="docs/screenshots/test-success.png" alt="Maven Automated Test Results" width="900">
 
 </p>
 
 Test coverage includes:
 
-- Application context loading
+Application context loading
 
-- Category service business logic
+Category service business logic
 
-- Post service business logic
+Post service business logic
 
-- Comment service business logic
+Comment service business logic
 
-- Repository dependency mocking
+Repository dependency mocking
 
-- Successful operations
+Successful operations
 
-- Resource-not-found scenarios
+Resource-not-found scenarios
 
-- Duplicate-resource scenarios
+Duplicate-resource scenarios
 
----
+🚀 Getting Started
 
-## Getting Started
-
-### Prerequisites
+Prerequisites
 
 Install:
 
-- Java 21 or newer
+Java 21 or newer
 
-- Apache Maven
+Apache Maven
 
-- Git
+Git
 
 Verify:
 
-```bash
 
 java -version
 
@@ -817,119 +731,98 @@ mvn -version
 
 git --version
 
-```
 
-### Clone the Repository
+Clone the Repository
 
-```bash
 
 git clone https://github.com/Ashutosh9-pan/week6-spring-blog-api.git
 
 cd week6-spring-blog-api
 
-```
 
+Run the Application
 
-
-### Run the Application
-
-```bash
 
 mvn spring-boot:run
 
-```
 
 The API starts at:
 
-```text
 
 http://localhost:8080
 
-```
 
----
-
-## Development and Production Profiles
+Development and Production Profiles
 
 The default configuration activates the development profile:
 
-```properties
 
 spring.profiles.active=dev
 
-```
 
 Development uses H2.
 
-For production, activate the `prod` profile and provide the required PostgreSQL environment variables.
+For production, activate the prod profile and provide the required PostgreSQL environment variables.
 
 Example:
 
-```bash
 
 mvn spring-boot:run -Dspring-boot.run.profiles=prod
 
-```
 
----
-
-## HTTP Status Codes
+HTTP Status Codes
 
 | Status | Meaning |
 
 |---|---|
 
-| `200 OK` | Successful GET, PUT or PATCH request |
+| 200 OK | Successful GET, PUT or PATCH request |
 
-| `201 Created` | Resource successfully created |
+| 201 Created | Resource successfully created |
 
-| `204 No Content` | Resource successfully deleted |
+| 204 No Content | Resource successfully deleted |
 
-| `400 Bad Request` | Request validation failed |
+| 400 Bad Request | Request validation failed |
 
-| `404 Not Found` | Resource does not exist |
+| 404 Not Found | Resource does not exist |
 
-| `409 Conflict` | Duplicate resource |
+| 409 Conflict | Duplicate resource |
 
-| `500 Internal Server Error` | Unexpected server error |
+| 500 Internal Server Error | Unexpected server error |
 
----
-
-## Key Engineering Concepts Demonstrated
+Key Engineering Concepts Demonstrated
 
 This project demonstrates practical backend development concepts including:
 
-- RESTful API design
+RESTful API design
 
-- Layered architecture
+Layered architecture
 
-- Dependency injection
+Dependency injection
 
-- DTO pattern
+DTO pattern
 
-- ORM and entity relationships
+ORM and entity relationships
 
-- Repository pattern
+Repository pattern
 
-- Transaction management
+Transaction management
 
-- Pagination and sorting
+Pagination and sorting
 
-- Request validation
+Request validation
 
-- Centralized exception handling
+Centralized exception handling
 
-- Environment-based configuration
+Environment-based configuration
 
-- API documentation
+API documentation
 
-- Unit testing and mocking
+Unit testing and mocking
 
-- Development and production database profiles
+Development and production database profiles
 
----
-
-## Project Verification
+Project Verification
 
 | Component | Status |
 
@@ -964,18 +857,14 @@ This project demonstrates practical backend development concepts including:
 
 | Automated Tests | ✅ 17/17 Passed |
 
----
+👨‍💻 Author
 
-## Author
-
-**Ashutosh Panwar**
+Ashutosh Panwar
 
 B.Tech Computer Science & Engineering
 
----
+✅ Project Status
 
-## Project Status
-
-**Completed — Week 6 Spring Boot Blog REST API**
+Completed — Week 6 Spring Boot Blog REST API
 
 The Week 6 project has been implemented, tested, documented and deployed to production with Render and PostgreSQL.
